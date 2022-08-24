@@ -1,2 +1,0 @@
-node1 ansible_user=root ansible_ssh_private_key_file=/var/ansible/ansible_key
-node2 ansible_user=root ansible_ssh_private_key_file=/var/ansible/ansible_key
