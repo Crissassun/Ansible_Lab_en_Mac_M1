@@ -1,0 +1,14 @@
+---
+- hosts: all
+  tasks:
+    - name: Ping all nodes
+      ping:
+      register: var_out
+      
+
+          
+    - name: Execution succexxfully
+      debug:
+        msg: " The status of execution {{ var_out }}  "
+
+

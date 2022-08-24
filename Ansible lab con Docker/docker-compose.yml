@@ -1,0 +1,40 @@
+version: '3'
+services:
+  ansible:
+    build: 
+      context: ./ansible/
+    image: ansible_master
+    container_name: master
+    hostname: master
+    command: ["/usr/sbin/sshd","-D"]
+    volumes:
+      - ansible_vol:/var/ansible
+  
+  node: 
+    links:
+      - ansible
+    build:
+      context: ./node/
+    image: node
+    container_name: node1
+    hostname: node1
+    command: ["/var/key.sh"]
+    volumes:
+      - ansible_vol:/var/ansible
+
+  node2: 
+    links:
+      - ansible
+    build:
+      context: ./node/
+    image: node
+    container_name: node2
+    hostname: node2
+    command: ["/var/key.sh"]
+    volumes:
+      - ansible_vol:/var/ansible
+
+volumes:
+  ansible_vol:
+
+
